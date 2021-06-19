@@ -1,0 +1,38 @@
+{% extends 'html/base.html' %}
+{% load static %}
+{% block title %} Profile {% endblock %}
+{% block content %}
+
+<body id="bg" style="background-image: url('{% static 'img/about5.jpg' %}');">
+</body>
+
+	 <div class="row mt-3 mx-3">
+		<div class="col-md-3 h-100">
+			
+				<img src="{{request.user.updhl.fil.url}}" class="card-img-top rounded" height="230px" width="100%"/>
+				<div class="card-footer">
+					<h2 class="bg-info text-center text-white border rounded p-2">{{user.name}}</h2>
+				</div>
+			</div>
+		</div>
+		<div class="col-md">
+			<div class="card border-success">
+				<h3 class="bg-dark text-white text-center p-2">Hall Details</h3>
+				<div class="container mt-4">
+	<div class="card">
+		<img src="{{user.updhl.fil.url}}" class="card-img-top rounded" height="230px" width="100%"/>
+		<!-- <img src="{% static 'img/HallImages/minerva.jpg' %}"  style="width:150px;height:100px;"> -->
+		<h2 class="text-danger">{{s.name}}</h2>
+		<h5 class="text-success">{{s.status}}</h5>
+		<h5>Halltype: {{s.halltype}}</h5>
+		<h5>Occupancy: {{s.occupancy}}</h5>
+	</div>
+</div>
+					
+				<a href="{% url 'bkh' %}" class="btn btn-warning m-2 text-light"><h4>BookNow</h4></a>
+			</div>
+		</div>
+	</div> 
+</div>
+
+{% endblock %}

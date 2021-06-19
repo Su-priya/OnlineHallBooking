@@ -1,0 +1,32 @@
+{% extends 'html/base.html' %}
+{% load static %}
+{% block title %} Profile {% endblock %}
+{% block content %}
+<u class="text-white mt-2"><h2 class="text-white text-center mx-auto mt-5">Make Payment - Enter your card details</h2>
+ </u>
+<div class="text-center mt-4">
+<img src="{% static 'img/american.jpg' %}"  style="width:150px;height:100px;">
+<img src="{% static 'img/discover.jpg' %}"  style="width:150px;height:100px;">
+<img src="{% static 'img/mastercard.jpg' %}" style="width:150px;height:100px;">
+<img src="{% static 'img/visa.jpg' %}"  style="width:150px;height:100px;">
+</div>
+<body id="bg" style="background-image: url('{% static 'img/about5.jpg' %}');">
+</body>
+<div class="container">
+  <div class="card shadow-lg col-md-5 mx-auto mt-5">
+    <div class="card-body">
+      <form method="POST" >
+				{% csrf_token %}
+				<!-- <table class="table table-borderless"> -->
+					<div class="col-md mb-2">
+					{% for m in p %}
+					<div class="mb-2">
+						{{m}}
+					</div>
+					{% endfor %}
+      </div>
+      <input type="submit" value="Confirm Payment" class="btn btn-success btn-block">
+  </form>
+  </div>
+</div>
+{% endblock %}

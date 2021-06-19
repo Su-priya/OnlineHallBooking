@@ -1,0 +1,58 @@
+{% extends 'html/base.html' %}
+{% block title %} Booked Halls {% endblock %}
+{% load static %}
+{% block content %}
+
+<body id="bg" style="background-image: url('{% static 'img/about5.jpg' %}');">
+</body>
+<div class="container-fluid mt-3">
+	{% if messages %}
+	{% for j in messages %}
+	<div class="alert alert-{{j.tags}} alert-dismissible mt-2">
+  		<button type="button" class="close m-2" data-dismiss="alert">&times;</button>
+  		<!-- <img src="{% static 'images/usrgd.jpg' %}" class="rounded-circle" height="40px" width="50px"/> -->  {{j}}
+	</div>
+	{% endfor %}
+	{% endif %}
+	<div class="row">
+		<div class="card col-md mx-2">
+		<div class="card-body">
+			
+			<table class="table table-borderless" id="table_id">
+				<tr class="bg-dark text-white border rounded">
+					<th>sno</th>
+					<th>Hall</th>
+					<!-- <th>Address</th>
+					<th>Halltype</th> -->
+					<th>Booked Date</th>
+				
+				</tr>
+				{% if user.is_superuser %}
+				{% for b in ss %}
+				<tr>
+					<td>{{forloop.counter}}</td>
+					<td>{{b.name}}</td>
+					<!-- <td>{{b.address}}</td>
+					<td>{{b.halltype}}</td> -->
+					<td>{{b.date}}</td>
+				</tr>
+					
+				{% endfor %}
+				{% else %}
+				{% for n in mn %}
+				<tr>
+					<td>{{forloop.counter}}</td>
+					<td>{{n.name}}</td>
+					<!-- <td>{{n.address}}</td>
+					<td>{{n.halltype}}</td> -->
+					<td>{{n.date}}</td>
+					
+				</tr>
+				{% endfor %}
+				{% endif %}
+			</table>
+		</div>
+	</div>
+	
+</div>
+{% endblock %}

@@ -1,0 +1,49 @@
+{% extends 'html/base.html' %}
+{% block title %} Halls {% endblock %}
+{% load static %}
+{% block content %}
+
+<body id="bg" style="background-image: url('{% static 'img/about5.jpg' %}');">
+</body>
+<div class="container-fluid mt-3">
+	
+	{% if messages %}
+	{% for j in messages %}
+	<div class="alert alert-{{j.tags}} alert-dismissible mt-2">
+  		<button type="button" class="close m-2" data-dismiss="alert">&times;</button>
+  		<!-- <img src="{% static 'images/usrgd.jpg' %}" class="rounded-circle" height="40px" width="50px"/> -->  {{j}}
+	</div>
+	{% endfor %}
+	{% endif %}
+	<div class="row">
+		<div class="card col-md mx-2">
+		<div class="card-body">
+			<table class="table table-borderless" id="table_id">
+				<tr class="bg-dark text-white border rounded">
+					<th>sno</th>
+					<!-- <th>Hall</th> -->
+					<th>Address</th>
+					<!-- <th>Halltype</th> -->
+					<th>Booked for Date</th>
+					<th>Actions</th>
+				</tr>
+				{% for n in m %}
+				<tr>
+					<td>{{forloop.counter}}</td>
+					<!-- <td>{{n.name}}</td> -->
+					<td>{{n.your_address}}</td>
+					<!-- <td>{{n.halltype}}</td> -->
+					<td>{{n.date}}</td>
+					<td><a href="{% url 'avh'  %}" class="btn btn-info mx-2">Go back to view halls</a><a href="{% url 'deltb' n.id %}" class="btn btn-danger mx-2">Delete</a></td>
+					
+				</tr>	
+					
+				
+				{% endfor %}
+			</table>
+		</div>
+	</div>
+
+	
+</div>
+{% endblock %}

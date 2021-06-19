@@ -1,0 +1,34 @@
+{% extends 'html/base.html' %}
+{% block title %} Dashboard {% endblock %}
+{% block content %}
+{% load static %}
+<body id="bg" style="background-image: url('{% static 'img/about5.jpg' %}');">
+</body>
+
+<!-- <h3>Welcome {{user.username}}</h3>
+<a href="">My Cases</a>
+</br>
+<a href="">Crimes List</a> -->
+
+<div class="container mt-5">
+	<div class="jumbotron">
+		<h3>
+		{% if user.is_superuser %}
+		Admin Main Page
+
+		{% elif user.role == 1 %}
+		User Page
+
+		{% elif user.role == 2 %}
+		Manager
+
+		{% else %}
+		welcome {{user.username}}
+
+		{% endif %}
+
+		</h3>
+		
+	</div>
+</div>
+{% endblock %}
